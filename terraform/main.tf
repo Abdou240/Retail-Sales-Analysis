@@ -8,16 +8,37 @@ terraform {
 }
 
 provider "google" {
-  # Configuration options
-  project = "vigilant-cider-376613"
-  region  = "europe-west4"
+  credentials = file("keys/my-creds.json")
+  project     = "vigilant-cider-376613"
+  region      = "europe-west4"
 }
 
-resource "google_storage_bucket" "demo-bucket" {
-  name          = "terraform-demo-bucket-cider-376613"
+resource "google_storage_bucket" "raw_bucket" {
+  name          = "sales_raw"
   location      = "EU"
   force_destroy = true
+  lifecycle_rule {
+    condition {
+      age = 7
+    }
+    action {
+      type = "Delete"
+    }
+  }
 
+  lifecycle_rule {
+    condition {
+      age = 1
+    }
+    action {
+      type = "AbortIncompleteMultipartUpload"
+    }
+  }
+}
+resource "google_storage_bucket" "cleaned_bucket" {
+  name          = "sales_cleaned"
+  location      = "EU"
+  force_destroy = true
   lifecycle_rule {
     condition {
       age = 3
@@ -35,4 +56,9 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+
+resource "google_bigquery_dataset" "demo-dataset" {
+  dataset_id = "demo_dataset"
 }
