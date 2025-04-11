@@ -52,5 +52,5 @@ Terraform is used to set up the following key components on Google Cloud:
      terraform apply
      ```
    - Terraform will then deploy your GCP infrastructure (storage, datasets, cluster, and IAM role assignments) accordingly.
-
+ 
 ---
