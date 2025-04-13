@@ -54,3 +54,8 @@ Terraform is used to set up the following key components on Google Cloud:
    - Terraform will then deploy your GCP infrastructure (storage, datasets, cluster, and IAM role assignments) accordingly.
  
 ---
+## Step 2: Download and Upload Sales Data to GCS
+
+Once the infrastructure is provisioned, the next step is to upload the raw sales dataset into your GCS bucket. This script automates the process of downloading the dataset and uploading the relevant CSV file to your bucket.
+
+
