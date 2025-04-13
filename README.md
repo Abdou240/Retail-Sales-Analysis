@@ -54,8 +54,15 @@ Terraform is used to set up the following key components on Google Cloud:
    - Terraform will then deploy your GCP infrastructure (storage, datasets, cluster, and IAM role assignments) accordingly.
  
 ---
+
 ## Step 2: Download and Upload Sales Data to GCS
 
-Once the infrastructure is provisioned, the next step is to upload the raw sales dataset into your GCS bucket. This script automates the process of downloading the dataset and uploading the relevant CSV file to your bucket.
+After you have provisioned your infrastructure with Terraform, the next step is to ingest your raw sales data into your Google Cloud Storage bucket. For this purpose, you will run a Bash script that automates the following actions:
+
+1. **Download the Dataset:** The script fetches the latest sample sales dataset from Kaggle using a direct URL with `curl`.
+2. **Unzip and Extract:** It then unzips the downloaded archive and extracts the CSV file that contains the raw sales data.
+3. **Upload to GCS:** Finally, the script uploads the extracted CSV file to your designated GCS bucket (e.g., `sales_data_bucket`) using `gsutil`.
+
+To execute this step, navigate to the project’s root directory and run the Bash script (located in the `scripts/` folder) after making it executable. This completes the data ingestion phase and prepares your raw dataset for further processing in later steps.
 
 
