@@ -71,5 +71,5 @@ To execute this step, navigate to the project’s root directory and run the Bas
 ## Step 3:
 
 ```bash
-gsutil -m cp -r scripts/Sales_Data_Cleaning_And_Aggregation.py gs://sales_data_bucket_project_cider/code
+gsutil -m cp -r scripts/Sales_Data_Cleaning_And_Aggregation.py gs://sales_data_bucket_project_cider/code/Sales_Data_Cleaning_And_Aggregation.py
 ```
