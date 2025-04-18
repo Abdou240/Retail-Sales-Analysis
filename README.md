@@ -65,4 +65,6 @@ After you have provisioned your infrastructure with Terraform, the next step is 
 
 To execute this step, navigate to the project’s root directory and run the Bash script (located in the `scripts/` folder) after making it executable. This completes the data ingestion phase and prepares your raw dataset for further processing in later steps.
 
-
+```bash
+.\scripts\download_and_upload.
+```
