@@ -68,3 +68,8 @@ To execute this step, navigate to the project’s root directory and run the Bas
 ```bash
 .\scripts\download_and_upload.
 ```
+## Step 3:
+
+```bash
+gsutil -m cp -r scripts/Sales_Data_Cleaning_And_Aggregation.py gs://sales_data_bucket_project_cider/code
+```
