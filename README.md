@@ -73,3 +73,18 @@ To execute this step, navigate to the project’s root directory and run the Bas
 ```bash
 gsutil -m cp -r scripts/Sales_Data_Cleaning_And_Aggregation.py gs://sales_data_bucket_project_cider/code/Sales_Data_Cleaning_And_Aggregation.py
 ```
+
+```bash
+
+gcloud dataproc jobs submit pyspark \
+    --cluster=sales-cleaning-cluster \
+    --region=us-central1 \
+    gs://sales_data_bucket_project_cider/code/Sales_Data_Cleaning_And_Aggregation.py \
+    -- \
+        --input_path=gs://sales_data_bucket_project_cider/sales_data_sample.csv \
+		--output_raw_bq=sales_cleaned_raw.sales_raw_tab \
+		--output_parquet=gs://sales_data_bucket_project_cider/processed/cleaned_sales_data \
+		--output_bq=sales_marts.sales_processed_cleaned_tab \
+		--output_agg_parquet=gs://sales_data_bucket_project_cider/aggregated/cleaned_aggregated_sales_data \
+		--output_agg_bq=sales_marts.cleaned_aggregated_sales_tab
+   ```
