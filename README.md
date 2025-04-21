@@ -69,11 +69,10 @@ To execute this step, navigate to the project’s root directory and run the Bas
 ```bash
 .\scripts\download_and_upload.sh
 ```
-## Step 3:
+## Step 3: Run the Cleaning & Aggregation Job on Dataproc
 
-```bash
-gsutil -m cp -r scripts/Sales_Data_Cleaning_And_Aggregation.py gs://sales_data_bucket_project_cider/code/Sales_Data_Cleaning_And_Aggregation.py
-```
+
+Now that your raw data and preprocessing script are uploaded, trigger the PySpark job on your Dataproc cluster. This command fetches the script from GCS, supplies all necessary parameters, and runs the data cleaning and aggregation workflow:
 
 ```bash
 
@@ -89,3 +88,4 @@ gcloud dataproc jobs submit pyspark \
 		--output_agg_parquet=gs://sales_data_bucket_project_cider/aggregated/cleaned_aggregated_sales_data \
 		--output_agg_bq=sales_marts.cleaned_aggregated_sales_tab
    ```
+## Step 4:
