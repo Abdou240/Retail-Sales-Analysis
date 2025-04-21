@@ -62,11 +62,12 @@ After you have provisioned your infrastructure with Terraform, the next step is 
 1. **Download the Dataset:** The script fetches the latest sample sales dataset from Kaggle using a direct URL with `curl`.
 2. **Unzip and Extract:** It then unzips the downloaded archive and extracts the CSV file that contains the raw sales data.
 3. **Upload to GCS:** Finally, the script uploads the extracted CSV file to your designated GCS bucket (e.g., `sales_data_bucket`) using `gsutil`.
+4. **Upload Preprocessing Script:** It also uploads the PySpark preprocessing script (`Sales_Data_Cleaning_And_Aggregation.py`) to the `code/` folder in the same bucket, ensuring Dataproc can access and execute it in the next step.
 
 To execute this step, navigate to the project’s root directory and run the Bash script (located in the `scripts/` folder) after making it executable. This completes the data ingestion phase and prepares your raw dataset for further processing in later steps.
 
 ```bash
-.\scripts\download_and_upload.
+.\scripts\download_and_upload.sh
 ```
 ## Step 3:
 
