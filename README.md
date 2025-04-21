@@ -47,9 +47,9 @@ Terraform is used to set up the following key components on Google Cloud:
 2. **Initialize and Apply Terraform:**
    - Navigate to the Terraform directory and run:
      ```bash
-     terraform init
-     terraform plan
-     terraform apply
+     terraform -chdir=terraform/ init
+     terraform -chdir=terraform/ plan
+     terraform -chdir=terraform/ apply
      ```
    - Terraform will then deploy your GCP infrastructure (storage, datasets, cluster, and IAM role assignments) accordingly.
  
