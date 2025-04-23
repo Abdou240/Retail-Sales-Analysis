@@ -118,7 +118,11 @@ resource "google_dataproc_cluster" "sales_cluster" {
     software_config {
       optional_components = ["JUPYTER"]
     }
-
+    # You can define multiple initialization_action blocks
+    initialization_action {
+      script      = "gs://sales_data_bucket_project_cider/code/initialization_action.sh"
+      timeout_sec = 500
+    }
   }
 }
 

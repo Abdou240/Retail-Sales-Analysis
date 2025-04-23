@@ -70,3 +70,18 @@ else
   exit 1
 fi
 
+# Upload the PySpark script to the GCS bucket
+SCRIPT_PATH="./scripts//initialization_action.sh"
+if [ -f "$SCRIPT_PATH" ]; then
+  echo "Uploading $SCRIPT_PATH to gs://$BUCKET_NAME/code/ ..."
+  gsutil cp "$SCRIPT_PATH" "gs://$BUCKET_NAME/code/"
+  if [ $? -eq 0 ]; then
+    echo "Script upload successful!"
+  else
+    echo "Script upload failed."
+    exit 1
+  fi
+else
+  echo "Error: $SCRIPT_PATH not found."
+  exit 1
+fi
